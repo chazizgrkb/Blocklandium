@@ -23,7 +23,7 @@ $res = array($dlg);
 
 $msg = new \stdClass();
 $msg->type = "message";
-$msg->message = "cheeseRox Vitre API Prototype";
+$msg->message = "Blocklandium API Prototype";
 $msg->date = time();
 $res[] = $msg;
 

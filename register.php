@@ -8,6 +8,8 @@ if (isset($_POST['action'])) {
 	$email = (isset($_POST['email']) ? $_POST['email'] : null);
 	$pass = (isset($_POST['pass1']) ? $_POST['pass1'] : null);
 	$pass2 = (isset($_POST['pass2']) ? $_POST['pass2'] : null);
+	
+	$blid = (isset($_POST['blid']) ? $_POST['blid'] : null);
 
 	if (!isset($username)) $error .= 'Blank username. ';
 	if (!isset($email)) $error .= 'Blank email. ';
@@ -19,8 +21,8 @@ if (isset($_POST['action'])) {
 
 	if ($error == '') {
 		$token = bin2hex(random_bytes(32));
-		query("INSERT INTO users (username, password, email, token, joined) VALUES (?,?,?,?,?)",
-			[$username,password_hash($pass, PASSWORD_DEFAULT), $email, $token, time()]);
+		query("INSERT INTO users (username, password, email, token, joined, bl_id) VALUES (?,?,?,?,?,?)",
+			[$username,password_hash($pass, PASSWORD_DEFAULT), $email, $token, time(),$blid]);
 
 		setcookie('SBTOKEN', $token, 2147483647);
 
